@@ -1,10 +1,6 @@
 <?php
-session_start();
-if(isset($_SESSION['busqueda']))
-{
-require_once 'Model/conexion.class.php';
-$link = new conexionclass();
-$link->conectarse();
+require_once "header.php";
+require_once "../coreapp/conection.php";
 
 $dia=$_REQUEST['dia'];
 $mes=$_REQUEST['mes'];
@@ -12,48 +8,40 @@ $year=$_REQUEST['year'];
 
 if($dia <> "" and $mes <> "" and $year <> "" ){
     $fecha=$year."-".$mes."-".$dia;
-    $consulta123 = "SELECT cod_sct, cod_not, num_sct, cod_dst, fec_doc, cod_sub, nom_bie, can_fol, cod_pro, obs_sct, num_fol FROM dbarp.escrituras1 WHERE fec_doc ='$fecha' LIMIT 0, 150";
-    $result=mysql_query($consulta123);
-    $cons_total = "SELECT COUNT(*) FROM dbarp.escrituras1 WHERE fec_doc LIKE '$fecha'";
-    $Res_Total = mysql_query($cons_total); $total=mysql_fetch_array($Res_Total) ;
+    $sql = "SELECT cod_sct, cod_not, num_sct, cod_dst, fec_doc, cod_sub, nom_bie, can_fol, cod_pro, obs_sct, num_fol FROM dbarp.escrituras1 WHERE fec_doc ='$fecha' LIMIT 0, 150";
+    $sql_total = "SELECT COUNT(*) FROM dbarp.escrituras1 WHERE fec_doc LIKE '$fecha'";
     
-    $num = mysql_num_rows($result);
+    $result=$mysqli->query($sql);
+    $res_total = $mysqli->query($sql_total);
+    $total=$res_total->num_rows;    
+    $num = $result->num_rows;
 }
 
 if($dia == ""){
         $fecha=$year."-".$mes."-"."%";
-        $consulta123 = "SELECT cod_sct, cod_not, num_sct, cod_dst, fec_doc, cod_sub, nom_bie, can_fol, cod_pro, obs_sct, num_fol FROM dbarp.escrituras1 WHERE fec_doc LIKE '$fecha' LIMIT 0,150";
-        $cons_total = "SELECT COUNT(*) FROM dbarp.escrituras1 WHERE fec_doc LIKE '$fecha'";
-        $Res_Total = mysql_query($cons_total); $total=mysql_fetch_array($Res_Total) ;
-
-        $result=mysql_query($consulta123);
-        $num = mysql_num_rows($result);
+        $sql = "SELECT cod_sct, cod_not, num_sct, cod_dst, fec_doc, cod_sub, nom_bie, can_fol, cod_pro, obs_sct, num_fol FROM dbarp.escrituras1 WHERE fec_doc LIKE '$fecha' LIMIT 0,150";
+        $sql_total = "SELECT COUNT(*) FROM dbarp.escrituras1 WHERE fec_doc LIKE '$fecha'";
+        
+       $result=$mysqli->query($sql);
+       $res_total = $mysqli->query($sql_total);
+       $total=$res_total->num_rows;    
+       $num = $result->num_rows;
         
 }
 
 if($dia == "" and $mes == 0){
         $fecha=$year."-"."%"."-"."%";
-        $consulta123 = "SELECT cod_sct, cod_not, num_sct, cod_dst, fec_doc, cod_sub, nom_bie, can_fol, cod_pro, obs_sct, num_fol FROM dbarp.escrituras1 WHERE fec_doc LIKE '$fecha' LIMIT 0, 200";
-        $cons_total = "SELECT COUNT(*) FROM dbarp.escrituras1 WHERE fec_doc LIKE '$fecha'";
-        $Res_Total = mysql_query($cons_total); $total=mysql_fetch_array($Res_Total) ;
-        $result=mysql_query($consulta123);
-        $num = mysql_num_rows($result);
+        $sql = "SELECT cod_sct, cod_not, num_sct, cod_dst, fec_doc, cod_sub, nom_bie, can_fol, cod_pro, obs_sct, num_fol FROM dbarp.escrituras1 WHERE fec_doc LIKE '$fecha' LIMIT 0, 200";
+        $sql_total = "SELECT COUNT(*) FROM dbarp.escrituras1 WHERE fec_doc LIKE '$fecha'";
+       
+        $result=$mysqli->query($sql);
+        $res_total = $mysqli->query($sql_total);
+        $total=$res_total->num_rows;    
+        $num = $result->num_rows;
 }
 
-if($num > 0){
-}
-else
-{
-	$error="La Fecha colocada, no Existen en la Base de Datos.  Intente con otra fecha.\n El Administrador.";
-}
 ?>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="stylesheet" type="text/css" href="css/busquedas2.css" />
-<title>Busqueda - Archivo Regional de Puno</title>
-</head>
-<body>
+
 <form id="form1" name="form1" method="post" action="">
   <table>
   	<caption><?php echo "Se han encontrado :".$total[0]." escrituras, Mostrandose <span id='error'>".$num."</span> coincidencias con la fecha \"".$fecha."\"."?></caption>
@@ -175,10 +163,3 @@ else
 ?>
 </body>
 </html>
-<?php
-}
-else
-{
-   header("Location: ../arpweb/index.htm");
-}
-?>

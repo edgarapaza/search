@@ -33,6 +33,7 @@ function ingreso(){
     <li><a href="./buscar_favor.php"/>Buscar Favorecido</a></li>
     <li><a href="./buscar_favor_juri.php"/>Buscar Favorecido Juridico</a></li>
     <li><a href="./buscar_x_fecha.php"/>Buscar por Fecha</a></li>
+    <li><a href="./lista.php"/>Buscar NUEVO LISTADO</a></li>
     <li><a href="#" />Buscar por Nombre del Bien</a></li>
   </ul>
 </body>
