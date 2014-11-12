@@ -2,16 +2,17 @@
 include "../coreapp/conection.php";
 include "header.php";
 
-	$nombre  = $_REQUEST['nombre'];
-	$paterno = $_REQUEST['paterno'];
-	$materno = $_REQUEST['materno'];
+$nombre  = $_REQUEST['nombre'];
+$paterno = $_REQUEST['paterno'];
+$materno = $_REQUEST['materno'];
+
 ?>
 <h2 class="sub-header">Listado por Nombres de Otorgantes o Favorecidos</h2>
 	<form method="post" class="form-horizontal">
 		<input type="text" name="nombre" placeholder="Nombre" value="<?php echo $nombre;?>"/>
 		<input type="text" name="paterno" placeholder="Apellido Paterno" value="<?php echo $paterno;?>"/>
 		<input type="text" name="materno" placeholder="Apellido Materno" value="<?php echo $materno;?>"/>
-		<button value="Buscar Nombre" type="submit" name="buscar" class="btn btn-info">Buscar</button>
+		<input value="Buscar Nombre" type="submit" name="buscar" class="btn btn-info">Buscar</input>
 	</form>
 
         <div class="table-responsive">
@@ -19,13 +20,14 @@ include "header.php";
 
 			<?php
 
+
 				if($nombre =="" and $paterno =="" and $materno =="")
 				{
-					echo "<script language='javascript' type='text/javascript'>	alert('Tiene que escribir algun Nombre u Apellido en los cuadros.  Graicas');</script>";
+					echo "<script language='javascript' type='text/javascript'>	alert('Tiene que escribir algun Nombre u Apellido en los cuadros.  Gracias');</script>";
 				}
 				else
 				{
-					echo "
+					/*echo "
 					<div class='panel panel-info'>
 					  <div class='panel-heading'>
 					    <h3 class='panel-title'>Info: Nombre Buscado</h3>
@@ -61,7 +63,7 @@ include "header.php";
 					*/
 				echo "<table class='table table-striped table-hover'> <tbody>";
 				echo "<tr><th>Numero</th><th>Nombre</th><th>Apellido Paterno</th><th>Apellido Materno</th><th>Operaciones</th></tr>";
-					if(isset($_GET['buscar']))
+					if(isset($_REQUEST['buscar']))
 					{
 						if($result = $mysqli->query("SELECT Cod_inv, Nom_inv, Pat_inv, Mat_inv FROM involucrados1 WHERE Nom_inv LIKE '%$nombre%' AND Pat_inv LIKE '%$paterno%' AND Mat_inv LIKE '%$materno%';"))
 						{
