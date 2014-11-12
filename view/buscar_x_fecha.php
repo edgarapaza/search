@@ -32,11 +32,12 @@ if($dia == ""){
 
 }
 ?>
-
-<form id="form1" name="form1" method="post">
+<h2 class="sub-header">Listado por Fechas -  Ingrese en lo posible la fecha exacta.</h2>
+<form method="post">
   <table>
   	<thead>
       <tr>
+        <th>---------------------> </th>
         <th width="33">Dia</th>
         <th width="79">Mes</th>
         <th width="38">A&ntilde;o</th>
@@ -45,6 +46,7 @@ if($dia == ""){
     </thead>
     <tbody>
       <tr>
+        <td></td>
         <td><input name="dia" type="text" id="dia" size="2" maxlength="2" /></td>
         <td><select name="mes" id="mes">
           <option value="0">--</option>
@@ -62,7 +64,7 @@ if($dia == ""){
           <option value="12">Dic</option>
         </select></td>
         <td><input name="year" type="text" id="year" size="4" maxlength="4" required /></td>
-        <td><input name="buscar" type="submit" id="buscar" value="Buscar" /></td>
+        <td><input name="buscar" type="submit" id="buscar" value="Buscar" class="btn btn-info"/></td>
       </tr>
     </tbody>
   </table>
@@ -145,7 +147,7 @@ if($dia == ""){
             }
           ?>
           </td>
-      <td><a href="./buscarSct_x_Fecha.php?cod_otor=<?php echo $var1;?>&cod_favor=<?php echo $var3;?>&cod_otor_ju=<?php echo $var2;?>&cod_favor_ju=<?php echo $var4;?>&cod_sct=<?php echo $Escritura;?>">Detalles</a></td>
+      <td><a href="lista_detallada_juridica.php?codigo_escritura=<?php printf("%s",$fila['cod_sct']);?>&proyecto=<?php printf("%s",$fila['proy_id']);?>">Mostrar Informacion</a></td>
     </tr>
       <?php
         $i=$i+1;

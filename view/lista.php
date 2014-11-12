@@ -2,32 +2,22 @@
 include "../coreapp/conection.php";
 include "header.php";
 
+	$nombre  = $_REQUEST['nombre'];
+	$paterno = $_REQUEST['paterno'];
+	$materno = $_REQUEST['materno'];
 ?>
-<link rel="stylesheet" type="text/css" href="../css/cuerpo.css">
-	<section class="datagrid">
-
-		<form method="get" class="form-horizontal">
-		<fieldset>
-			<legend>Busqueda por Nombre de Personas</legend>
-		    
-			<input type="text" name="nombre" placeholder="Nombre" />
-			<input type="text" name="paterno" placeholder="Apellido Paterno" />
-			<input type="text" name="materno" placeholder="Apellido Materno" />
-			<button value="Buscar Nombre" type="submit" name="buscar" class="btn btn-info">Buscar</button>
-		</fieldset>
-		</form>
-
-		
+<h2 class="sub-header">Listado por Nombres de Otorgantes o Favorecidos</h2>
+	<form method="post" class="form-horizontal">
+		<input type="text" name="nombre" placeholder="Nombre" value="<?php echo $nombre;?>"/>
+		<input type="text" name="paterno" placeholder="Apellido Paterno" value="<?php echo $paterno;?>"/>
+		<input type="text" name="materno" placeholder="Apellido Materno" value="<?php echo $materno;?>"/>
+		<button value="Buscar Nombre" type="submit" name="buscar" class="btn btn-info">Buscar</button>
+	</form>
 
         <div class="table-responsive">
-            
 
 
 			<?php
-				@$nombre  = $_GET['nombre'];
-				@$paterno = $_GET['paterno'];
-				@$materno = $_GET['materno'];
-
 
 				if($nombre =="" and $paterno =="" and $materno =="")
 				{
@@ -46,15 +36,15 @@ include "header.php";
 						/*
 						lA FUNCION QUE REALIZA ES DE MEDIR EL TIEMPO DE RESPUESTA DE LAS CONSULTAS CON
 						MYSQLI UY MOSTRAR EL DATOS EN EL AREA DE TRABAJO
-						
 
-						
+
+
 						function timequery(){
 						   static $querytime_begin;
 						   list($usec, $sec) = explode(' ',microtime());
-						    
+
 						       if(!isset($querytime_begin))
-						      {   
+						      {
 						         $querytime_begin= ((float)$usec + (float)$sec);
 						      }
 						      else
@@ -65,7 +55,7 @@ include "header.php";
 						}
 
 						timequery();
-								
+
 					/*
 					REALIZA LA BUSQUEDA DE LOS DATOS ANTES FILTRADO
 					*/
@@ -76,20 +66,20 @@ include "header.php";
 						if($result = $mysqli->query("SELECT Cod_inv, Nom_inv, Pat_inv, Mat_inv FROM involucrados1 WHERE Nom_inv LIKE '%$nombre%' AND Pat_inv LIKE '%$paterno%' AND Mat_inv LIKE '%$materno%';"))
 						{
 							echo "Numero de Resultados: ".$result->num_rows;
-							$i =1;	
+							$i =1;
 							if($result->num_rows > 0)
 							{
 								while($fila = $result->fetch_array())
 								{
-								echo "<tr><th>"; 
+								echo "<tr><th>";
 										echo $i;
 								echo "</th><th>";
-										echo $fila["Nom_inv"]; 
-								echo "</th><th>"; 
-										echo $fila["Pat_inv"]; 
-								echo "</th><th>"; 
-										echo $fila["Mat_inv"]; 
-								echo "</th><th>"; 
+										echo $fila["Nom_inv"];
+								echo "</th><th>";
+										echo $fila["Pat_inv"];
+								echo "</th><th>";
+										echo $fila["Mat_inv"];
+								echo "</th><th>";
 										echo "<a href='mostrardetalles.php?codigo=". $fila["Cod_inv"] ."'>Mostrar Informacion</a>";
 								echo "</td></tr>";
 
@@ -111,7 +101,7 @@ include "header.php";
 
 </body>
 </html>
-				
+
 <?php
 include "footer.php";
 ?>

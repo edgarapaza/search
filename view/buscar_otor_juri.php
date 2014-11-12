@@ -3,14 +3,14 @@
   include "header.php";
 ?>
 
+<h2 class="sub-header">Listado por Otorgantes o Favorecidos Jurídicos</h2>
 <form id="busqueda" name="busqueda">
   <table>
-      <label>BUSQUEDA POR "OTORGANTES" JURIDICO</label>
     <thead>
       <tr>
         <td width="269">Otorgante Juridico</td>
         <td width="492"><input name="otor_juri" type="text" id="otor_juri" size="80" placeholder="Institucion o Razon Social" value="<?php echo @$otor_juri;?>" required /></td>
-        <td><input name="btnbuscar" type="submit" value="Buscar" /></td>
+        <td><input name="btnbuscar" type="submit" value="Buscar" class="btn btn-info" /></td>
       </tr>
     </thead>
   </table>

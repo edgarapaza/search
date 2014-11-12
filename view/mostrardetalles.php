@@ -1,8 +1,8 @@
 <?php
 	include "header.php";
 	include "../coreapp/conection.php";
-	$codigo = $_GET['codigo'];
-	//echo "Recibido: ".$codigo;
+	$codigo_involucrado = $_GET['codigo'];
+	//echo "Recibido: ".$codigo_involucrado;
 ?>
 
 	<h2 class="sub-header">Zona Otorgantes</h2>
@@ -22,7 +22,7 @@
 
 			<?php
 
-			if($result_otorgantes = $mysqli->query("SELECT cod_sct FROM escriotor1 WHERE cod_inv  = $codigo;"))
+			if($result_otorgantes = $mysqli->query("SELECT cod_sct FROM escriotor1 WHERE cod_inv  = $codigo_involucrado;"))
 			{
 				echo "Numero de Resultados: ".$result_otorgantes->num_rows;
 				$i=1;
@@ -95,7 +95,7 @@
 
 			<?php
 
-			if($result_favorecidos = $mysqli->query("SELECT cod_sct FROM escrifavor1 WHERE cod_inv  = $codigo;"))
+			if($result_favorecidos = $mysqli->query("SELECT cod_sct FROM escrifavor1 WHERE cod_inv  = $codigo_involucrado;"))
 			{
 				echo "Numero de Resultados: ".$result_favorecidos->num_rows;
 				$i=1;

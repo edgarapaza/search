@@ -43,7 +43,7 @@
               <ul class="dropdown-menu" role="menu">
                 <li><a href="./lista.php">Buscar por Nombres</a></li>
                 <li><a href="./buscar_x_fecha.php">Buscar por Fecha</a></li>
-                <li><a href="#">Buscar por Nombre del Bien</a></li>
+                <li><a href="./nombre_bien.php">Buscar por Nombre del Bien</a></li>
                 <li class="divider"></li>
                 <li class="dropdown-header">Adicionales</li>
                 <li><a href="./buscar_otor_juri.php">Buscar por Datos Juridicos</a></li>
@@ -51,7 +51,7 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="buscar_index.php">Principal</a></li>
+            <li class="active"><a href="./buscar_index.php">Principal</a></li>
             <li><a href="../index.html">Cerrar Sesion</a></li>
           </ul>
         </div><!--/.nav-collapse -->
