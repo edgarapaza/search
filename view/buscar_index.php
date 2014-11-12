@@ -10,8 +10,7 @@ include "../coreapp/conection.php";
     <li><a href="SystemOld/index_old.php">Sistema Antiguo</a></li>
     <li>-</li>
     <li><a href="./lista.php"/>Buscar por Nombres</a></li>
-    <li><a href="./buscar_otor_juri.php"/>Buscar Otorgante Juridico</a></li>
-    <li><a href="./buscar_favor_juri.php"/>Buscar Favorecido Juridico</a></li>
+    <li><a href="./buscar_otor_juri.php"/>Buscar por Datos Juridicos</a></li>
     <li><a href="./buscar_x_fecha.php"/>Buscar por Fecha</a></li>
     <li><a href="#" />Buscar por Nombre del Bien</a></li>
   </ul>

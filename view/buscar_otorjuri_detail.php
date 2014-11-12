@@ -2,24 +2,39 @@
     require "header.php";
     require_once '../coreapp/conection.php';
 
-    $cod_otor_ju = $_REQUEST['cod_otor_ju'];
-    echo "Codigo".$cod_otor_ju;
-
-    $query = "SELECT cod_sct FROM escriotor1 WHERE cod_inv_ju =".$cod_otor_ju;
-    $result1 = $mysqli->query($query1);
-    $num = $result->num_rows;
+    $cod_juridico = $_REQUEST['cod_otor_ju'];
 
 
-    $query1 = "SELECT cod_sct FROM escrifavor1 WHERE cod_inv_ju = ".$cod_otor_ju;
-    $result1 = $mysqli->query($query1);
-    $num3 = $result1->num_rows;
+    $sql1_pj = "SELECT cod_sct, cod_inv, cod_inv_ju FROM escriotor1 WHERE cod_inv_ju =".$cod_juridico;
+    $result1 = $mysqli->query($sql1_pj);
+
+    $sql2_pj = "SELECT cod_sct, cod_inv, cod_inv_ju FROM escrifavor1 WHERE cod_inv_ju = ".$cod_juridico;
+    $result2 = $mysqli->query($sql2_pj);
+
+
+    /**
+     * Obtener todos los datos de las esrituras a mostrar
+     */
+
+        //$i=1;
+        while($fila1 =$result1->fetch_assoc())
+        {
+
+            printf("Lista de Otorgantes");
+            echo "<br>";
+            printf ("Codigo de Escritura: %s Codigo Involucrado Juridico (%s)\n", $fila1["cod_sct"], $fila1["cod_inv_ju"]);
+            echo "<br>";
+
+        }
+
+
+        while($fila2 =$result2->fetch_assoc())
+        {
+            printf("\nLista de Favorecidos \n");
+            echo "<br>";
+            printf ("Codigo de Escritura: %s Codigo Involucrado Juridico (%s)\n", $fila2["cod_sct"], $fila2["cod_inv_ju"]);
+            echo "<br>";
+
+        }
 
 ?>
-
-<h3>Zona Otorgantes</h3>
-<?php echo "\nNumero de Escrituras como Otorgante: ".$num."\n";?>
-<h3>Zona Favorecidos</h3>
-<?php echo "\nNumero de Escrituras como Favorecidos: ".$num3."\n";?>
-
-  </body>
-</html>

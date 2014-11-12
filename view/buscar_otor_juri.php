@@ -17,7 +17,8 @@
 </form>
 
 <?php
-if(isset($_REQUEST["btnbuscar"])){
+if(isset($_REQUEST["btnbuscar"]))
+{
     //inicializo el criterio y recibo cualquier cadena que se desee buscar
             $nexo1           = "%";
             $otor_juri      = trim($_REQUEST['otor_juri']);
@@ -28,7 +29,7 @@ if(isset($_REQUEST["btnbuscar"])){
             $res             = $mysqli->query($sql);
             $numeroRegistros = $res->num_rows;
             echo "Numero de Resultados: ".$numeroRegistros;
-    ?>
+?>
 
 
     <table class='table table-striped table-hover'>
@@ -36,7 +37,7 @@ if(isset($_REQUEST["btnbuscar"])){
           <tr>
     	  	  <th>Num</th>
             <th>OTORGANTE JURIDICO </th>
-    		    <th>DETALLES</th>
+    		    <th>DETALLES edgar</th>
           </tr>
       </thead>
       <tbody>
@@ -48,7 +49,7 @@ if(isset($_REQUEST["btnbuscar"])){
     	    <tr>
               <td width="3"><?php echo $i?></td>
               <td><?php echo $registro["Raz_inv"]; ?></td>
-              <td><a href="buscar_otorjuri_detail.php?cod_otor_ju=<?php echo $registro["Cod_inv"]; ?>">Ver Detalles </a></td>
+              <td><a href="buscar_juridicos_detail.php?cod_otor_ju=<?php echo $registro["Cod_inv"]; ?>">Ver Detalles </a></td>
           </tr>
                <?php
                   $i++;
@@ -56,9 +57,8 @@ if(isset($_REQUEST["btnbuscar"])){
                ?>
         </tbody>
     </table>
-
-  <?php
-    }
-  ?>
+<?php
+   }
+?>
 </body>
 </html>
