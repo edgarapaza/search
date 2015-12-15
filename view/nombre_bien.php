@@ -1,16 +1,19 @@
 <?php
-include 'header.php';
-require_once '../coreapp/conection.php';
+require_once 'header.php';
+require_once '../coreapp/Conection.php';
 
-if(isset($_REQUEST['btnbuscar'])){
-  $nexo        = "%";
-  $nombre_bien = trim($_REQUEST['nombre_bien']);
-  $separar     = explode(" ",$nombre_bien);
-  $union       = implode($nexo, $separar);
+$conection = new Conection();
+$mysqli    = $conection->Conectar();
 
-  $sql         = "SELECT cod_sct, cod_sub, fec_doc, nom_bie, proy_id FROM escrituras1 WHERE nom_bie Like '%$union%'";
-  $res         = $mysqli->query($sql);
-  $data        = $res->fetch_assoc();
+if (isset($_REQUEST['btnbuscar'])) {
+	$nexo        = "%";
+	$nombre_bien = trim($_REQUEST['nombre_bien']);
+	$separar     = explode(" ", $nombre_bien);
+	$union       = implode($nexo, $separar);
+
+	$sql             = "SELECT cod_sct, cod_sub, fec_doc, nom_bie, proy_id FROM escrituras1 WHERE nom_bie Like '%$union%'";
+	$res             = $mysqli->query($sql);
+	$data            = $res->fetch_assoc();
 	$numeroRegistros = $res->num_rows;
 	echo "Numero de Registros: ".$numeroRegistros;
 }
@@ -44,24 +47,23 @@ if(isset($_REQUEST['btnbuscar'])){
                     </thead>
 
 <?php
- $i=1;
-while ($row = $res->fetch_assoc())
-  {
-?>
-          <tr>
-              <td><?php echo $i?></td>
-              <td><?php
-                  $query2 = "SELECT des_sub FROM subseries WHERE cod_sub =".$row["cod_sub"];
-                  $exe_query2 = $mysqli->query($query2);
-                  $subserie1 = $exe_query2->fetch_assoc();
-                  echo $subserie1["des_sub"];
-                ?></td>
-              <td><?php echo $row["fec_doc"]; ?></td>
-              <td><?php echo $row["nom_bie"]; ?></td>
-              <td><?php echo $row["proy_id"]; ?></td>
-              <td><a href="./detalles_nombreBien.php?cod_escritura=<?php echo $row['cod_sct'];?>">Ver Detalles</a></td>
-          </tr>
-<?php
-$i++;
+$i = 1;
+while ($row = $res->fetch_assoc()) {
+	?>
+						          <tr>
+						              <td><?php echo $i?></td>
+						              <td><?php
+	$query2     = "SELECT des_sub FROM subseries WHERE cod_sub =".$row["cod_sub"];
+	$exe_query2 = $mysqli->query($query2);
+	$subserie1  = $exe_query2->fetch_assoc();
+	echo $subserie1["des_sub"];
+	?></td>
+						              <td><?php echo $row["fec_doc"];?></td>
+						              <td><?php echo $row["nom_bie"];?></td>
+						              <td><?php echo $row["proy_id"];?></td>
+						              <td><a href="./detalles_nombreBien.php?cod_escritura=<?php echo $row['cod_sct'];?>">Ver Detalles</a></td>
+						          </tr>
+	<?php
+	$i++;
 }
 ?>

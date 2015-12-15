@@ -1,0 +1,24 @@
+.icon-home3 {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe900;');
+}
+.icon-pencil {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe901;');
+}
+.icon-file-empty {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe902;');
+}
+.icon-calendar {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe903;');
+}
+.icon-user {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe904;');
+}
+.icon-user-tie {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe905;');
+}
+.icon-cog {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe906;');
+}
+.icon-stats-bars {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe907;');
+}

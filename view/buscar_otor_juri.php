@@ -1,6 +1,9 @@
 <?php
-  require_once '../coreapp/conection.php';
-  include "header.php";
+require_once '../coreapp/Conection.php';
+include "header.php";
+
+$conection = new Conection();
+$mysqli    = $conection->Conectar();
 ?>
 
 <h2 class="sub-header">Listado por Otorgantes o Favorecidos Jurídicos</h2>
@@ -17,48 +20,45 @@
 </form>
 
 <?php
-if(isset($_REQUEST["btnbuscar"]))
-{
-    //inicializo el criterio y recibo cualquier cadena que se desee buscar
-            $nexo1           = "%";
-            $otor_juri      = trim($_REQUEST['otor_juri']);
-            $datos1          = explode(" ",$otor_juri);
-            $union1          = implode($nexo1, $datos1);
+if (isset($_REQUEST["btnbuscar"])) {
+	//inicializo el criterio y recibo cualquier cadena que se desee buscar
+	$nexo1     = "%";
+	$otor_juri = trim($_REQUEST['otor_juri']);
+	$datos1    = explode(" ", $otor_juri);
+	$union1    = implode($nexo1, $datos1);
 
-            $sql             = "SELECT Cod_inv, Raz_inv, otros_juri FROM involjuridicas1 WHERE Raz_inv LIKE '% $union1 %';";
-            $res             = $mysqli->query($sql);
-            $numeroRegistros = $res->num_rows;
-            echo "Numero de Resultados: ".$numeroRegistros;
-?>
+	$sql = "SELECT Cod_inv, Raz_inv FROM involjuridicas1 WHERE Raz_inv LIKE '% $union1 %';";
 
-
-    <table class='table table-striped table-hover'>
-    	<thead>
-          <tr>
-    	  	  <th>Num</th>
-            <th>OTORGANTE JURIDICO </th>
-    		    <th>DETALLES edgar</th>
-          </tr>
-      </thead>
-      <tbody>
-              <?php
-              $i =1;
-               while($registro=$res->fetch_assoc())
-        		      {
-              ?>
-    	    <tr>
-              <td width="3"><?php echo $i?></td>
-              <td><?php echo $registro["Raz_inv"]; ?></td>
-              <td><a href="buscar_juridicos_detail.php?cod_otor_ju=<?php echo $registro["Cod_inv"]; ?>">Ver Detalles </a></td>
-          </tr>
-               <?php
-                  $i++;
-                  }
-               ?>
-        </tbody>
-    </table>
-<?php
-   }
+	$res             = $mysqli->query($sql);
+	$numeroRegistros = $res->num_rows;
+	echo "Numero de Resultados: ".$numeroRegistros;
+	?>
+	<table class='table table-striped table-hover'>
+								    	<thead>
+								          <tr>
+								    	  	  <th>Num</th>
+								            <th>OTORGANTE JURIDICO </th>
+								    		    <th>DETALLES edgar</th>
+								          </tr>
+								      </thead>
+								      <tbody>
+	<?php
+	$i = 1;
+	while ($registro = $res->fetch_assoc()) {
+		?>
+																    	    <tr>
+																              <td width="3"><?php echo $i?></td>
+																              <td><?php echo $registro["Raz_inv"];?></td>
+																              <td><a href="mostrardetallesJuridicos.php?codigo=<?php echo $registro["Cod_inv"];?>">Ver Detalles </a></td>
+																          </tr>
+		<?php
+		$i++;
+	}
+	?>
+	</tbody>
+								    </table>
+	<?php
+}
 ?>
 </body>
 </html>

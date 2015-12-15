@@ -1,18 +1,20 @@
 <?php
-//echo $mysqli->host_info . "\n Usuario.php";
 
-function verificar($usuario, $clave){
-	include "../coreapp/conection.php";
+function verificar($usuario, $clave) {
+
+	require '../coreapp/Conection.php';
+	$conection = new Conection();
+	$con       = $conection->Conectar();
+
 	$rpta;
-	$sql = "SELECT cod_usu, niv_usu FROM usuarios WHERE log_usu='$usuario' AND psw_usu ='$clave' LIMIT 0,1;";
+	$sql = "SELECT cod_usu FROM usuarios WHERE log_usu='$usuario' AND psw_usu ='$clave' LIMIT 0,1;";
 
-	$result = $mysqli->query($sql);
+	$result = $con->query($sql);
 	$numero = $result->num_rows;
-	
-	if ($numero > 0){
+
+	if ($numero > 0) {
 		$rpta = TRUE;
-	}else
-	{
+	} else {
 		$rpta = FALSE;
 	}
 

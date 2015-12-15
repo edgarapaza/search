@@ -1,2 +1,0 @@
-CREATE VIEW listanotarios AS
-SELECT cod_not as codigo, CONCAT(nom_not,' ',pat_not,' ',mat_not) as notario, provincia FROM notarios;

@@ -1,0 +1,81 @@
+a
+{
+    color: white;
+    font-size: 22px;
+    text-decoration: none;
+}
+body{
+    font-family: "Ubuntu";
+    font-size: 16px;
+}
+p{
+    font-weight: bold;
+}
+.central{
+
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1024px;
+}
+#antiguo, #nuevo
+{
+    border-radius: 10px;
+}
+#antiguo
+{
+    background-color: #58BBE3;
+    color: white;
+    height: 120px;
+    line-height: 120px;
+    text-align: center;
+    vertical-align: top;
+    width: 100%;
+}
+#antiguo:hover
+{
+    background-color: #FFDA75;
+    color: #0D0000;
+}
+
+#nuevo
+{
+    background-color: #D3F78F;
+    color: #202020;
+    height: 120px;
+    line-height: 120px;
+    vertical-align: top;
+    text-align: center;
+    width: 100%;
+}
+#nuevo:hover
+{
+    background-color: #04498D;
+    color: white;
+}
+
+#sis_anterior{
+    display: inline;
+    float: left;
+    margin: 5px 5px;
+    margin-right: 80px;
+}
+
+#sis_nuevo{
+    display: inline-block;
+    margin: 5px 5px;
+}
+#sis_anterior:hover{
+    background-color: #005488;
+    color: white;
+}
+
+#sis_nuevo:hover{
+    background-color: #FFE381;
+    color: black;
+}
+
+@media screen and (max-width: 680px) {
+    #sis_anterior, #sis_nuevo{
+        width: 100%;
+    }
+}
