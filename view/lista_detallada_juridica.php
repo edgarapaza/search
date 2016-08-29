@@ -1,16 +1,16 @@
 <?php
-include "../coreapp/Conection.php";
-include "header.php";
+	include "../coreapp/Conection.php";
+	include "header.php";
 
-$conection = new Conection();
-$mysqli    = $conection->Conectar();
+	$conection = new Conection();
+	$mysqli    = $conection->Conectar();
 
-//Obtener el Numero de Escritura
-$codigo_escritura = $_REQUEST['codigo_escritura'];
-$proyecto         = $_REQUEST['proyecto'];
+	//Obtener el Numero de Escritura
+	$codigo_escritura = $_REQUEST['codigo_escritura'];
+	$proyecto         = $_REQUEST['proyecto'];
 
-/*Si es distinto de 0 es que Se realizó con un Proyecto, en caso contrario es de la forma anterior de ingreso*/
-if ($proyecto > 0) {
+	/*Si es distinto de 0 es que Se realizó con un Proyecto, en caso contrario es de la forma anterior de ingreso*/
+	if ($proyecto > 0) {
 	/*
 	Consultas en general para obtener los datos en base a las tablas relacionadas
 	 */
@@ -39,15 +39,15 @@ if ($proyecto > 0) {
 
 	?>
 	<div class="bs-docs-section">
-																																										        <div class="page-header">
-																																										          <div class="row">
-																																										            <div class="col-lg-10">
-																																										              <h2 id="buttons">Listado de Personas</h2>
-																																										            </div>
-																																										          </div>
-																																										        </div>
-																																										 <div class="row">
-																																										          <div class="col-lg-7">
+		<div class="page-header">
+			<div class="row">
+				<div class="col-lg-10">
+					<h2 id="buttons">Listado de Personas</h2>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-7">
 
 	<?php
 	echo "<table class='table table-striped table-hover '>
@@ -84,24 +84,28 @@ if ($proyecto > 0) {
 	echo "</td>
     </tr>
     <tr>
-      <td>Numero de Escritura</td>
-      <td>";
-	echo $exeDetalle["num_sct"];
-	echo "</td>
-    </tr>
-    <tr>
       <td>Nombre del Bien</td>
       <td>";
 	echo $exeDetalle["nom_bie"];
 	echo "</td>
     </tr>
+
+
+
     <tr>
-      <td>Protocolo 22</td>
-      <td>";echo $exeProyecto["num_protocolo"];echo "</td>
+      <td>Protocolo</td>
+      <td class='info'><h4>";echo $exeProyecto["num_protocolo"];echo "</h4></td>
     </tr>
     <tr>
+    <td>Numero de Escritura</td>
+    <td class='success'>";
+	echo $exeDetalle["num_sct"];
+	echo "</td>
+    </tr>
+
+    <tr>
       <td>Folio</td>
-      <td>";
+      <td class='warning'>";
 	echo $exeDetalle["num_fol"];
 	echo "</td>
     </tr>
@@ -138,9 +142,10 @@ if ($proyecto > 0) {
 	/*****************************************************************************/
 	?>
 	<a href='#' class='btn btn-success'>Encontrado / Nueva Busqueda</a>
-																																			<a href='#' class='btn btn-danger'>No es / Nueva Busqueda</a>
-																																										</div>
-																																										    <div class="col-lg-5">
+
+	<a href='#' class='btn btn-danger'>No es / Nueva Busqueda</a>
+			</div>
+		<div class="col-lg-5">
 
 	<?php
 	include "../controller/checkListadoNew.php";
@@ -246,16 +251,16 @@ ZONA PARA LISTADO DE ESCRITURAS SIN PROYECTO
   </tr>
   <tr>
     <td>Protocolo</td>
-    <td class='btn btn-primary btn-lg'>";echo $ver['Protocolo'];echo "</td>
+    <td class='info'><h4>";echo $ver['Protocolo'];echo "</h4></td>
   </tr>
   <tr>
   <tr>
     <td>Numero de la Escritura</td>
-    <td>";echo $ver['Escritura'];echo "</td>
+    <td class='success'>";echo $ver['Escritura'];echo "</td>
   </tr>
   <tr>
     <td>Folio del Documento</td>
-    <td>";echo $ver['Folio'];echo "</td>
+    <td class='warning'>";echo $ver['Folio'];echo "</td>
   </tr>
   <tr>
     <td>Cantidad de Folio</td>
@@ -308,13 +313,13 @@ ZONA PARA LISTADO DE ESCRITURAS SIN PROYECTO
 
 	echo "<h2>Favorecidos</h2>";
 	for ($i = 0; $i <= count($listaf)-1; $i++) {
-		echo "<div class='alert alert-dismissable alert-success'>
+		echo "<div class='alert alert-success'>
               <strong>".$listaf[$i]['persona']."</div>";
 	}
 
 	echo "<br>Personas Juridicas<br>";
 	for ($i = 0; $i <= count($listaf)-1; $i++) {
-		echo "<div class='alert alert-dismissable alert-success'>
+		echo "<div class='alert alert-success'>
               <strong>".$listaf[$i]['Raz_inv']."</div>";
 
 	}

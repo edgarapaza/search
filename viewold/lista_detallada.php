@@ -278,3 +278,5 @@ else
     echo "</section>";
 }
 ?>
+
+<?php include "footer.php"; ?>

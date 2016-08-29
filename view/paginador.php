@@ -3,7 +3,7 @@ include "../coreapp/conection.php";
 
 //$registros nos entrega la cantidad de registros a mostrar.
 $registros = 10;
- 
+
 //$contador como su nombre lo indica el contador.
 $contador = 1;
 /**
@@ -28,7 +28,7 @@ if (!$pagina) {
 <th>Pais</th>
 <th>Continente</th>
 </tr>
-</thead>	
+</thead>
 <tbody>
 <?php
 	/**
@@ -36,7 +36,7 @@ if (!$pagina) {
 	* de registros si están activos o no.
 	*/
 	$resultados = $mysqli->query("SELECT * FROM escrituras");
-	 
+
 	//Contamos la cantidad de filas entregadas por la consulta, de esta forma sabemos cuantos registros fueron retornados por la consulta.
 	$total_registros = $resultados->num_rows;
 	//Generamos otra consulta la cual creara en si la paginación, ordenando y creando un límite en las consultas.
@@ -46,30 +46,30 @@ if (!$pagina) {
 	// Si tenemos un retorno en la variable $total_registro iniciamos el ciclo para mostrar los datos.
 	if ($total_registros) {
 	while ($personas = $resultados->fetch_assoc()) {
-	?>	
+	?>
 	<!-- Muestra de Datos usando el comodin <?=$variable; ?> es lo mismo que <?php echo $variable; ?> -->
 	<tr>
-	<td><?=$contador;?></td>	
+	<td><?=$contador;?></td>
 	<td><?=$personas["cod_sct"];?></td>
 	<td><?=$personas["num_sct"];?></td>
 	<td><?=$personas["num_fol"];?></td>
 	<td><?=$personas["fec_doc"];?></td>
-	</tr>	
+	</tr>
 	<?php
 	/**
 	* La variable $contador es la misma que iniciamos arriba con valor 1, en cada ciclo sumara 1 a este valor.
 	* $contador sirve para mostrar cuantos registros tenemos, es mas que nada una guía.
 	*/
 	$contador++;
-	}	
+	}
 	} else {
 	echo "<font color='darkgray'>(sin resultados)</font>";
 	}
-	mysqli_free_result($resultados);	
+	mysqli_free_result($resultados);
 	?>
 	</tbody>
 	</table>
-	<div>	
+	<div>
 	<?php
 	if ($total_registros) {
 	/**
@@ -88,7 +88,7 @@ if (!$pagina) {
 	echo "<a href='#'>". $pagina ."</a>";
 	} else {
 	echo "<a href='paginador.php?pagina=$i'>$i</a> ";
-	}	
+	}
 	}
 	/**
 	* Igual que la opción primera de "< Anterior", pero acá para la opción "Siguiente >", si estamos en la ultima pagina no podremos
@@ -98,11 +98,13 @@ if (!$pagina) {
 	echo "<a href='paginador.php?pagina=".($pagina+1)."'>Siguiente ></a>";
 	} else {
 	echo "<a href='#'>Siguiente ></a>";
-	}	
 	}
-	?>	
+	}
+	?>
 </div>
 <?php
 // Cerramos conexión con MySQLi.
 $mysqli->close();
 ?>
+
+<?php include "footer.php"; ?>

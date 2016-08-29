@@ -28,124 +28,126 @@ $exe_notario = $query_notario->fetch_array();
 $exe_sserie  = $query_sserie->fetch_array();
 //$exe_personal = $query_personal->fetch_array();
 ?>
-<div class="bs-docs-section">
-        <div class="page-header">
-          <div class="row">
-            <div class="col-lg-10">
-              <h2 id="buttons">Listado de Personas</h2>
-            </div>
-          </div>
-        </div>
- <div class="row">
-          <div class="col-lg-7">
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Listado de Personas</h2>
+    </div>
+  </div>
 
-<?php
-echo "<table class='table table-striped table-hover '>
-  <thead>
-    <tr>
-      <th>CONCEPTO</th>
-      <th>DETALLE</th>
+  <div class="row">
+    <div class="col-md-8">
 
-    </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Nombre del Notario</td>
-    <td>";echo $exe_notario['Nom_not']."   ".$exe_notario['Pat_not']."  ".$exe_notario['Mat_not'];echo "</td>
-  </tr>
-  <tr>
-    <td>Lugar</td>
-    <td>";echo $exe_notario['Lugar'];echo "</td>
-  </tr>
-  <tr>
-    <td>Sub Serie</td>
-    <td>";echo $exe_sserie['des_sub'];echo "</td>
-  </tr>
-  <tr>
-    <td>Fecha del Documento</td>
-    <td>";echo $ver['Fecha'];echo "</td>
-  </tr>
-  <tr>
-    <td>Nombre del Bien</td>
-    <td>";echo $ver['NBien'];echo "</td>
-  </tr>
-  <tr>
-    <td>Protocolo</td>
-    <td class='btn btn-success'>";echo $ver['Protocolo'];echo "</td>
-  </tr>
-  <tr>
-  <tr>
-    <td>Numero de la Escritura</td>
-    <td>";echo $ver['Escritura'];echo "</td>
-  </tr>
-  <tr>
-    <td>Folio del Documento</td>
-    <td>";echo $ver['Folio'];echo "</td>
-  </tr>
-  <tr>
-    <td>Cantidad de Folio</td>
-    <td>";echo $ver['NumFolios'];echo "</td>
-  </tr>
-  <tr>
-    <td>Observaciones</td>
-    <td>";echo $ver['Obs'];echo "</td>
-  </tr>
-  <tr>
-    <td>Trabajador</td>
-    <td>";echo $exe_personal['trabajador'];echo "</td>
-  </tr>
-  </tbody>
-</table>";
+        <?php
+        echo "<table class='table table-striped'>
+          <thead>
+            <tr>
+              <th>CONCEPTO</th>
+              <th>DETALLE</th>
 
-/*****************************************************************************
-LISTADO DE OTORGANTES NOTARALES Y JURIDICOS
- ******************************************************************************
- *****************************************************************************/
-/*****************************************************************************/
-?>
-<a href='#' class='btn btn-success'>Encontrado / Nueva Busqueda</a>
-<a href='#' class='btn btn-danger'>No es / Nueva Busqueda</a>
+            </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>Nombre del Notario</td>
+            <td>";echo $exe_notario['Nom_not']."   ".$exe_notario['Pat_not']."  ".$exe_notario['Mat_not'];echo "</td>
+          </tr>
+          <tr>
+            <td>Lugar</td>
+            <td>";echo $exe_notario['Lugar'];echo "</td>
+          </tr>
+          <tr>
+            <td>Sub Serie</td>
+            <td>";echo $exe_sserie['des_sub'];echo "</td>
+          </tr>
+          <tr>
+            <td>Fecha del Documento</td>
+            <td>";echo $ver['Fecha'];echo "</td>
+          </tr>
+          <tr>
+            <td>Nombre del Bien</td>
+            <td>";echo $ver['NBien'];echo "</td>
+          </tr>
+          <tr>
+            <td>Protocolo</td>
+            <td class='warning'><h4>";echo $ver['Protocolo'];echo "</h4></td>
+          </tr>
+          <tr>
+          <tr>
+            <td>Numero de la Escritura</td>
+            <td>";echo $ver['Escritura'];echo "</td>
+          </tr>
+          <tr>
+            <td>Folio del Documento</td>
+            <td>";echo $ver['Folio'];echo "</td>
+          </tr>
+          <tr>
+            <td>Cantidad de Folio</td>
+            <td>";echo $ver['NumFolios'];echo "</td>
+          </tr>
+          <tr>
+            <td>Observaciones</td>
+            <td>";echo $ver['Obs'];echo "</td>
+          </tr>
+          <tr>
+            <td>Trabajador</td>
+            <td>";echo $exe_personal['trabajador'];echo "</td>
+          </tr>
+          </tbody>
+        </table>";
+
+        /*****************************************************************************
+        LISTADO DE OTORGANTES NOTARALES Y JURIDICOS
+         ******************************************************************************
+         *****************************************************************************/
+        /*****************************************************************************/
+        ?>
+        <a href='#' class='btn btn-success'>Encontrado / Nueva Busqueda</a>
+        <a href='#' class='btn btn-danger'>No es / Nueva Busqueda</a>
+    </div>
+
+    <div class="col-md-4">
+
+        <?php
+        include "../controller/checkListado.php";
+        $lista = NombresOtorgantes($codigo_escritura);
+
+        echo "<h2>Otorgantes</h2>";
+        for ($i = 0; $i <= count($lista)-1; $i++) {
+        	echo "<div class='alert alert-dismissable alert-success'>
+                      <strong>".$lista[$i]['persona']."</div>";
+        }
+
+        echo "<br>Personas Juridicas<br>";
+        for ($i = 0; $i <= count($lista)-1; $i++) {
+        	echo "<div class='alert alert-dismissable alert-success'>
+                      <strong>".$lista[$i]['Raz_inv']."</div>";
+
+        }
+
+        /****************************************************************************
+         *****************************************************************************
+        LISTADO DE FAVORECIDOS JURIDICOS
+         ******************************************************************************
+         *****************************************************************************/
+        $listaf = NombresFavorecidos($codigo_escritura);
+
+        echo "<h2>Favorecidos</h2>";
+        for ($i = 0; $i <= count($listaf)-1; $i++) {
+        	echo "<div class='alert alert-dismissable alert-success'>
+                      <strong>".$listaf[$i]['persona']."</div>";
+        }
+
+        echo "<br>Personas Juridicas<br>";
+        for ($i = 0; $i <= count($listaf)-1; $i++) {
+        	echo "<div class='alert alert-dismissable alert-success'>
+                      <strong>".$listaf[$i]['Raz_inv']."</div>";
+
+        }
+
+        ?>
+    </div>
+  </div>
 </div>
-    <div class="col-lg-5">
 
-<?php
-include "../controller/checkListado.php";
-$lista = NombresOtorgantes($codigo_escritura);
-
-echo "<h2>Otorgantes</h2>";
-for ($i = 0; $i <= count($lista)-1; $i++) {
-	echo "<div class='alert alert-dismissable alert-success'>
-              <strong>".$lista[$i]['persona']."</div>";
-}
-
-echo "<br>Personas Juridicas<br>";
-for ($i = 0; $i <= count($lista)-1; $i++) {
-	echo "<div class='alert alert-dismissable alert-success'>
-              <strong>".$lista[$i]['Raz_inv']."</div>";
-
-}
-
-/****************************************************************************
- *****************************************************************************
-LISTADO DE FAVORECIDOS JURIDICOS
- ******************************************************************************
- *****************************************************************************/
-$listaf = NombresFavorecidos($codigo_escritura);
-
-echo "<h2>Favorecidos</h2>";
-for ($i = 0; $i <= count($listaf)-1; $i++) {
-	echo "<div class='alert alert-dismissable alert-success'>
-              <strong>".$listaf[$i]['persona']."</div>";
-}
-
-echo "<br>Personas Juridicas<br>";
-for ($i = 0; $i <= count($listaf)-1; $i++) {
-	echo "<div class='alert alert-dismissable alert-success'>
-              <strong>".$listaf[$i]['Raz_inv']."</div>";
-
-}
-
-?>
-</div>
-        </div>
-      </div>
+<?php include "footer.php"; ?>

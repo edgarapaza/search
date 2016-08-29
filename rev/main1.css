@@ -1,0 +1,49 @@
+body {
+  background: #3e3e3e; }
+
+header {
+  background: #A51D1D;
+  color: #fff; }
+  header nav {
+    background: #DCE980;
+    padding: 40px; }
+    header nav a {
+      margin-left: 10px;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      -ms-border-radius: 5px;
+      border-radius: 5px;
+      background: red;
+      padding: 20px;
+      color: white;
+      text-decoration: none; }
+      header nav a:hover {
+        background: #FB9726;
+        color: black; }
+
+.contenedor {
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto; }
+
+.main {
+  background: #fff;
+  display: inline-block; }
+  .main article {
+    margin: 10px;
+    float: left;
+    width: 60%;
+    color: #FB9726; }
+    .main article p {
+      color: black; }
+  .main .derecha {
+    float: right;
+    display: block;
+    width: 35%; }
+
+footer {
+  background: #5E5E5E;
+  color: #F4F4F4;
+  padding: 20px 20px; }
+
+/*# sourceMappingURL=main.css.map */
