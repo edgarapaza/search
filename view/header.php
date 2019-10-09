@@ -31,8 +31,6 @@
               <li><a href="nombre_bien.php"><span class="icon-globe"></span>Buscar por Bien</li>
               <li class="submenu">
                 <a href="../viewold/index.php" class="label label-danger">Sistema Anterior<span class=""></span></a>
-                <ul class="children">
-                </ul>
               </li>
             </ul>
           </nav>

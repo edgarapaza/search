@@ -23,7 +23,7 @@
     </style>
 
   </head>
-  <body>
+  <body style='background-image:url(imagenes/fondo.jpg);background-attachment:fixed;background-repeat:no-repeat;background-position:50% 50%;'>
 
     <div class="container">
 
@@ -132,7 +132,7 @@
            <h3>Contactos</h3>
            <p>Desarrollado en el ARP - Ing Edgar Apaza Choque Dic 2015</p>
             <p>Dirección: Jr. Arequipa # 1143</p>
-            <p>Teléfonos. 051-365910 / 051-368846</p>
+            <p>Teléfonos. 051-600704 / 051-600705</p>
             <p>Email: <a href="http://archivo@regionalpuno.gob.pe" >archivo@regionalpuno.gob.pe</a></p>
           </div>
         </div>

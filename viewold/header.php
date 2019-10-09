@@ -36,7 +36,7 @@
                 </li>
 
                 <li class="submenu">
-                  <a href="../view/index.php"><span class="icon-main"></span>Sistema Actual</a>
+                  <a href="../view/index.php" class="alert-info"><span class="icon-main"></span>Sistema Actual</a>
                 </li>
               </ul>
             </nav>
