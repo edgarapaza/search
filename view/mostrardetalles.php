@@ -179,7 +179,7 @@
 									$i++;
 								}
 							} else {
-								echo $mysqli->error();
+								//echo $mysqli->error();
 							}
 						}
 						//mysqli_close();

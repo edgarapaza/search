@@ -8,7 +8,7 @@ $mysqli    = $conection->Conectar();
 
 $sql_invol = "SELECT CONCAT(Nom_inv,' ',Pat_inv,' ',Mat_inv) AS nombre FROM involucrados WHERE Cod_inv = ".$codigo_involucrado;
 $nom_invol = $mysqli->query($sql_invol);
-$res_invol = $nom_invol->fetch_assoc();
+$res_invol = $nom_invol->fetch_array(MYSQLI_ASSOC);
 
 ?>
 <div class="container">
@@ -37,7 +37,7 @@ $res_invol = $nom_invol->fetch_assoc();
 						echo "<br> Otorgado por: ". $res_invol["nombre"];
 						$i = 1;
 
-						while ($fila = $result_otorgantes->fetch_assoc()) {
+						while ($fila = $result_otorgantes->fetch_array(MYSQLI_ASSOC)) {
 							echo "<tr><td>";
 							echo $i."-";
 
@@ -47,13 +47,13 @@ $res_invol = $nom_invol->fetch_assoc();
 							//Buscar a los Otorgantes de los Favorecidos
 							$query_favorecido     = "SELECT cod_inv, flg_per FROM  escrifavor WHERE  cod_sct = ".$fila["cod_sct"];
 							$exe_query_favorecido = $mysqli->query($query_favorecido);
-							$favorecido_res       = $exe_query_favorecido->fetch_assoc();
+							$favorecido_res       = $exe_query_favorecido->fetch_array(MYSQLI_ASSOC);
 
 							if ($favorecido_res["flg_per"] == 0) {
 								//Consultar a Base de Datos sobre el nombre de los involucrados
 								$sql    = "SELECT CONCAT(Nom_inv,' ',Pat_inv,' ',Mat_inv) AS nombre FROM involucrados WHERE Cod_inv = ".$favorecido_res["cod_inv"];
 								$nom    = $mysqli->query($sql);
-								$result = $nom->fetch_assoc();
+								$result = $nom->fetch_array(MYSQLI_ASSOC);
 								echo $result["nombre"];
 							}
 
@@ -61,7 +61,7 @@ $res_invol = $nom_invol->fetch_assoc();
 								//Consultar a Base de Datos sobre el nombre de los involucrados Juridicos
 								$sqlj    = "SELECT Raz_inv FROM involjuridicas WHERE Cod_inv = ".$favorecido_res["cod_inv"];
 								$nomj    = $mysqli->query($sqlj);
-								$resultj = $nomj->fetch_assoc();
+								$resultj = $nomj->fetch_array(MYSQLI_ASSOC);
 								echo $resultj["Raz_inv"];
 							}
 
@@ -69,11 +69,11 @@ $res_invol = $nom_invol->fetch_assoc();
 
 							if ($escrituras = $mysqli->query($query1)) {
 								if ($escrituras->num_rows > 0) {
-									$escritura = $escrituras->fetch_assoc();
+									$escritura = $escrituras->fetch_array(MYSQLI_ASSOC);
 									echo "</td><td>";
 									$query2     = "SELECT des_sub FROM subseries WHERE cod_sub = ".$escritura["cod_sub"];
 									$exe_query2 = $mysqli->query($query2);
-									$subserie1  = $exe_query2->fetch_assoc();
+									$subserie1  = $exe_query2->fetch_array(MYSQLI_ASSOC);
 
 									echo $subserie1["des_sub"];
 									echo "</td><td>";
@@ -130,7 +130,7 @@ $res_invol = $nom_invol->fetch_assoc();
 						$i = 1;
 
 						if ($result_favorecidos->num_rows > 0) {
-							while ($filaf = $result_favorecidos->fetch_assoc()) {
+							while ($filaf = $result_favorecidos->fetch_array(MYSQLI_ASSOC)) {
 								echo "<tr><td>";
 								echo $i;
 
@@ -140,20 +140,20 @@ $res_invol = $nom_invol->fetch_assoc();
 
 								$query_otorgante     = "SELECT cod_inv, flg_per FROM  escriotor WHERE  cod_sct = ".$filaf["cod_sct"];
 								$exe_query_otorgante = $mysqli->query($query_otorgante);
-								$otorgante_res       = $exe_query_otorgante->fetch_assoc();
+								$otorgante_res       = $exe_query_otorgante->fetch_array(MYSQLI_ASSOC);
 
 								if ($otorgante_res["flg_per"] == 0) {
 									//Consultar a Base de Datos sobre el nombre de los involucrados
 									$sql1    = "SELECT CONCAT(Nom_inv,' ',Pat_inv,' ',Mat_inv) AS nombre FROM involucrados WHERE Cod_inv = ".$otorgante_res["cod_inv"];
 									$nom1    = $mysqli->query($sql1);
-									$result1 = $nom1->fetch_assoc();
+									$result1 = $nom1->fetch_array(MYSQLI_ASSOC);
 									echo $result1["nombre"];
 								}
 								if ($otorgante_res["flg_per"] == 1) {
 									//Consultar a Base de Datos sobre el nombre de los involucrados
 									$sqlj2    = "SELECT Raz_inv FROM involjuridicas WHERE Cod_inv = ".$otorgante_res["cod_inv"];
 									$nomj2    = $mysqli->query($sqlj2);
-									$resultj2 = $nomj2->fetch_assoc();
+									$resultj2 = $nomj2->fetch_array(MYSQLI_ASSOC);
 									echo $resultj2["Raz_inv"];
 								}
 								echo "</td>";
@@ -163,7 +163,7 @@ $res_invol = $nom_invol->fetch_assoc();
 										echo "</td><td>";
 										$query2     = "SELECT des_sub FROM subseries WHERE cod_sub =".$escritura["cod_sub"];
 										$exe_query2 = $mysqli->query($query2);
-										$subserie1  = $exe_query2->fetch_assoc();
+										$subserie1  = $exe_query2->fetch_array(MYSQLI_ASSOC);
 										echo $subserie1["des_sub"];
 										echo "</td><td>";
 										echo $escritura["num_sct"];

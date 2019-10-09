@@ -47,49 +47,24 @@
 					</tr>
 						<?php
 
-						if ($nombre == "" and $paterno == "" and $materno == "") {
-							//echo "<script language='javascript' type='text/javascript'>	alert('Tiene que escribir algun Nombre u Apellido en los cuadros.  Gracias');</script>";
+						if ($nombre == "" and $paterno == "" and $materno == "") 
+						{
+							#echo "<script language='javascript' type='text/javascript'> alert('Tiene que escribir algun Nombre u Apellido en los cuadros.  Gracias');</script>";
 
 						} else {
-							/*echo "
-							<div class='panel panel-info'>
-							<div class='panel-heading'>
-							<h3 class='panel-title'>Info: Nombre Buscado</h3>
-							</div>
-							<div class='panel-body'>";
-							echo "<p>".$nombre." ".$paterno." ".$materno."</p>";
-							echo "</div></div>";
-							/*
-							lA FUNCION QUE REALIZA ES DE MEDIR EL TIEMPO DE RESPUESTA DE LAS CONSULTAS CON
-							MYSQLI UY MOSTRAR EL DATOS EN EL AREA DE TRABAJO
-
-							function timequery(){
-							static $querytime_begin;
-							list($usec, $sec) = explode(' ',microtime());
-
-							if(!isset($querytime_begin))
-							{
-							$querytime_begin= ((float)$usec + (float)$sec);
-							}
-							else
-							{
-							$querytime = (((float)$usec + (float)$sec)) - $querytime_begin;
-							echo sprintf('<br />La consulta tardó %01.5f segundos.- <br />', $querytime);
-							}
-							}
-
-							timequery();
-
+							
 							/*
 							REALIZA LA BUSQUEDA DE LOS DATOS ANTES FILTRADO
 							 */
 
 							if (isset($_REQUEST['buscar'])) {
-								if ($result = $mysqli->query("SELECT Cod_inv, Nom_inv, Pat_inv, Mat_inv FROM involucrados1 WHERE Nom_inv LIKE '%$nombre%' AND Pat_inv LIKE '%$paterno%' AND Mat_inv LIKE '%$materno%';")) {
+								$sql_dat = "SELECT Cod_inv, Nom_inv, Pat_inv, Mat_inv FROM involucrados1 WHERE Nom_inv LIKE '%$nombre%' AND Pat_inv LIKE '%$paterno%' AND Mat_inv LIKE '%$materno%';";
+								if ($result = $mysqli->query($sql_dat)) 
+								{
 									echo "Numero de Resultados: ".$result->num_rows;
 									$i = 1;
 									if ($result->num_rows > 0) {
-										while ($fila = $result->fetch_array()) {
+										while ($fila = $result->fetch_array(MYSQLI_ASSOC)) {
 											echo "<tr><th>";
 											echo $i;
 											echo "</th><th>";
@@ -106,7 +81,7 @@
 										}
 									}
 								} else {
-									echo $mysqli->error();
+									//echo $mysqli->error();
 								}
 							}
 						}
