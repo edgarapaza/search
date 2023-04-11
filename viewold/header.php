@@ -4,10 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
-  <link rel="stylesheet" href="../css/estilomenu1.css"
->  <link rel="stylesheet" href="../css/fonts1.css">
-
+  <link rel="stylesheet" href="../css/estilomenu1.css">
+  <link rel="stylesheet" href="../css/fonts1.css">
   <title>Sistema Busqueda</title>
+  <style type="text/css">
+      a:hover{
+        text-decoration: none;
+      }
+      body{
+        background-image: radial-gradient(circle at -19.64% 37.72%, #0094b9 0, #007493 25%, #0a536b 50%, #133544 75%, #0f1b23 100%);
+      }
+    </style>
 </head>
 <body>
   <div class="container">

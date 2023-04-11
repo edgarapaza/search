@@ -8,6 +8,14 @@
   <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
   <link rel="stylesheet" href="../css/style.css">
   <title>Sistema Busqueda</title>
+  <style type="text/css">
+      a:hover{
+        text-decoration: none;
+      }
+      body{
+        background-image: radial-gradient(circle at -19.64% 37.72%, #0094b9 0, #007493 25%, #0a536b 50%, #133544 75%, #0f1b23 100%);
+      }
+    </style>
 </head>
 <body>
 

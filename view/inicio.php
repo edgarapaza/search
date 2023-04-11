@@ -20,74 +20,29 @@
       a:hover{
         text-decoration: none;
       }
+      body{
+        background: rgb(2,0,36);
+        background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,0,0,0.5466561624649859) 0%, rgba(0,88,106,1) 100%);
+      }
+      .texto{
+        color: white;
+        font-size: 3.5em;
+      }
     </style>
 
   </head>
-  <body style='background-image:url(imagenes/fondo.jpg);background-attachment:fixed;background-repeat:no-repeat;background-position:50% 50%;'>
+  <body>
 
     <div class="container">
 
         <div class="row">
           <div class="col-lg-8 col-md-7 col-sm-6">
-            <h1>Sistema de Busqueda</h1>
-            <p class="lead">Archivo Regional de Puno</p>
+            <p class="texto">OFICINA DE INFORMATICA</p>
+            <h1 class="texto">Sistema de Busqueda</h1>
           </div>
         </div>
-
-      <div class="row">
-        <div class="col-lg-10">
-          <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-              <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-              <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-              <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-            </ol>
-
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox">
-              <div class="item active">
-                <img src="../images/11.jpg" height="340" width="960" alt="imagen1">
-                <div class="carousel-caption">
-                  <h1>Area de informatica</h1>
-                </div>
-              </div>
-              <div class="item">
-                <img src="../images/13.jpg" height="340" width="960" alt="otro">
-                <div class="carousel-caption">
-                  <h1>Innovacion en marcha</h1>
-                </div>
-              </div>
-              <div class="item">
-                <img src="../images/14.jpg" height="340" width="960" alt="otro">
-                <div class="carousel-caption">
-                  <h1>Innovacion en marcha</h1>
-                </div>
-              </div>
-              <em>Los archivos son la memoria de la patria</em>
-            </div>
-
-            <!-- Controls -->
-            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-              <span class="" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-              <span class="" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
-        </div>
-      </div>
 
       <div class="bs-docs-section">
-
-        <div class="row">
-          <div class="col-lg-12">
-            <h2>Seleccione donde buscar</h2>
-          </div>
-        </div>
-
         <div class="row">
           <div class="col-lg-6">
             <div class="bs-component">
