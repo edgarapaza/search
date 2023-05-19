@@ -22,10 +22,9 @@
       }
       body{
         background: rgb(2,0,36);
-        background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,0,0,0.5466561624649859) 0%, rgba(0,88,106,1) 100%);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(200,200,201,1) 1%, rgba(0,212,255,1) 100%);
       }
       .texto{
-        color: white;
         font-size: 3.5em;
       }
     </style>
